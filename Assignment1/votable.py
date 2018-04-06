@@ -28,12 +28,19 @@ Mag = table.array['Mag']
 MJD = table.array['ObsTime']
 
 # plot magnitude vs time
+plt.rc('font', size=12)
+
 plt.scatter(MJD, Mag)
 plt.gca().invert_yaxis()
 plt.xlabel('Date (MJD)')
 plt.ylabel('Magnitude')
 plt.title(query['Name'])
-plt.show()
+
+file = 'plots/vot.pdf'
+plt.savefig(file, bbox_inches='tight')
+
+
+
 
 
 
