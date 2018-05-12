@@ -29,19 +29,22 @@ with urllib.request.urlopen(url, query_dat) as response:
             dat_txt.write(CSV)
 
     MasterID, Mag, Magerr, RA, Dec, MJD, Blend = np.loadtxt('data/csv.txt', delimiter=',', unpack=True, skiprows=1)
+   
+    # time modulo period
+    mod_MJD = np.mod(MJD, 1.7)
 
     # plot magnitude vs time
     plt.rc('font', size=12)
 
-    plt.scatter(MJD, Mag)
+    plt.scatter(mod_MJD, Mag)
     plt.gca().invert_yaxis()
-    plt.xlabel('Date (MJD)')
+    plt.xlabel('Time modulo period = 1.7 days (days)')
     plt.ylabel('Magnitude')
     plt.title(query['Name'])
     
     file = 'plots/csv.pdf'
     plt.savefig(file, bbox_inches='tight')
-
+    plt.show()
 
         
 

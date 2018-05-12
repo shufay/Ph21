@@ -1,6 +1,7 @@
 import urllib.parse, urllib.request
 from astropy.io.votable import parse_single_table
 import matplotlib.pyplot as plt
+import numpy as np
 
 url = 'http://nesssi.cacr.caltech.edu/cgi-bin/getcssconedbid_release2.cgi'
 query = {
@@ -26,19 +27,21 @@ with urllib.request.urlopen(url, query_dat) as response:
 table = parse_single_table('data/vot.xml')
 Mag = table.array['Mag']
 MJD = table.array['ObsTime']
+# time modulo period
+mod_MJD = np.mod(MJD, 1.7)
 
 # plot magnitude vs time
 plt.rc('font', size=12)
 
-plt.scatter(MJD, Mag)
+plt.scatter(mod_MJD, Mag)
 plt.gca().invert_yaxis()
-plt.xlabel('Date (MJD)')
+plt.xlabel('Time modulo period = 1.7 days (days)')
 plt.ylabel('Magnitude')
 plt.title(query['Name'])
 
 file = 'plots/vot.pdf'
 plt.savefig(file, bbox_inches='tight')
-
+plt.show()
 
 
 
