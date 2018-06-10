@@ -66,7 +66,7 @@ plt.scatter(x, y, color='black')
 plt.title('Simple Data')
 plt.xlabel('x')
 plt.ylabel('y')
-plt.savefig('plots/simple_data.pdf')
+plt.savefig('simple_data.pdf')
 
 # Plot spring data
 plt.figure(2)
@@ -76,6 +76,6 @@ plt.scatter(x3, y3, color='red')
 plt.title('Spring Data')
 plt.xlabel('x')
 plt.ylabel('y')
-plt.savefig('plots/spring_data.pdf')
+plt.savefig('spring_data.pdf')
 plt.show()
 
