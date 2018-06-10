@@ -48,12 +48,6 @@ x3 = -1.5 * y1 + noise_x3
 
 sample2 = np.array([x1, y1, x2, y2, x3, y3]).T
 
-# Simulate camera data
-t = np.linspace(0., 20., 1000)
-noise_x = np.random.rand(np.size(t))
-noise_y = np.random.rand(np.size(t))
-noise_z = np.random.rand(np.size(t))
-
 # Simple data
 e_val1, e_vec1, proj1 = pca(sample1)
 print('Simple Data')
